@@ -38,18 +38,41 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
+![391812197-26765e12-1448-4442-8b42-e173735db3e5](https://github.com/user-attachments/assets/0e6a74fe-1938-4d5a-a02f-5796fa543c88)
+
 **Procedure**
 
 Write the detailed procedure here
-
+~~~
 **Program:**
+module full(A,B,Cin,Bin,Sum,Carry,Diff,Borrow);
+input A,B,Cin,Bin;
+output Sum,Carry,Diff,Borrow;
+assign Sum=A^(B^Cin);
+assign Carry=(A&B)|(A&Cin)|(B&Cin);
+assign Diff=A^(B^Bin);
+assign Borrow=(~A&Bin)|(~A&B)|(B&Bin);
+endmodule
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+module fs(a,b,difference,borrow);
+input a,b,bin;
+output difference,borrow;
+assign difference= ( (a ^ b)^bin);
+assign borrow= ( ( ~a & b)| ( bin & (~(a ^ b )));
+endmodule
 
+/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
+ Developed by:AJITH A
+ RegisterNumber:212224230012
+~~~
 **RTL Schematic**
+![Screenshot 2025-04-24 202814](https://github.com/user-attachments/assets/986caeea-b6bd-4bbd-922d-d63707d809b5)
 
-**Output Timing Waveform**
+![391812005-f0422017-40df-4f51-8b2b-18ebbb9d47ea](https://github.com/user-attachments/assets/344f65bd-9c0a-46aa-9cb0-8cb062e6e853)
+
+**Waveform**
+![391812099-d5d06393-4aaa-4ce0-a983-ce784ddbf165](https://github.com/user-attachments/assets/3ff3d96e-685f-4eee-8017-d45bfd07a1a8)
+![Screenshot 2025-04-24 202834](https://github.com/user-attachments/assets/d1024eff-84b7-4d2e-b855-99065422f334)
 
 **Result:**
 
