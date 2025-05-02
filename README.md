@@ -38,41 +38,90 @@ Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
 
-![391812197-26765e12-1448-4442-8b42-e173735db3e5](https://github.com/user-attachments/assets/0e6a74fe-1938-4d5a-a02f-5796fa543c88)
+FULL ADDER:
+
+![image](https://github.com/user-attachments/assets/f7c9d067-1896-4737-8416-6c4d017c9cc3)
+
+FULL SUBTRACTOR:
+
+![image](https://github.com/user-attachments/assets/4adf89f1-9965-4c26-b169-5b9ad088f565)
 
 **Procedure**
 
-Write the detailed procedure here
-~~~
-**Program:**
-module full(A,B,Cin,Bin,Sum,Carry,Diff,Borrow);
-input A,B,Cin,Bin;
-output Sum,Carry,Diff,Borrow;
-assign Sum=A^(B^Cin);
-assign Carry=(A&B)|(A&Cin)|(B&Cin);
-assign Diff=A^(B^Bin);
-assign Borrow=(~A&Bin)|(~A&B)|(B&Bin);
-endmodule
+Full Adder:
 
-module fs(a,b,difference,borrow);
-input a,b,bin;
-output difference,borrow;
-assign difference= ( (a ^ b)^bin);
-assign borrow= ( ( ~a & b)| ( bin & (~(a ^ b )));
-endmodule
+1.Open Quartus II and create a new project.
+
+2.Use schematic design entry to draw the full adder circuit.
+
+3.The circuit consists of XOR, AND, and OR gates.
+
+4.Compile the design, verify its functionality through simulation.
+
+5.Implement the design on the target device and program it.
+
+Full Subtractor:
+
+1.Follow the same steps as for the full adder.
+
+2.Draw the full subtractor circuit using schematic design.
+
+3.The circuit includes XOR, AND, OR gates to perform subtraction.
+
+4.Compile, simulate, implement, and program the design similarly to the full adder.
+
+**Program:**
 
 /* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
- Developed by:AJITH A
- RegisterNumber:212224230012
-~~~
+
+Developed by:MAGATHI D
+
+RegisterNumber:212223040108
+
+module fulladd_top(a,b,c,sum,carry,BO,DIFF);
+
+input a,b,c;
+
+output sum,carry,BO,DIFF;
+
+assign sum=a^b^c;
+
+assign carry= a&b | a&c | b&c;
+
+wire a0;
+
+not (a0,a);
+
+assign BO= b&c | a0&c | a0&b;
+
+assign DIFF=a^b^c;
+
+endmodule
+
+*/
+
 **RTL Schematic**
-![Screenshot 2025-04-24 202814](https://github.com/user-attachments/assets/986caeea-b6bd-4bbd-922d-d63707d809b5)
 
-![391812005-f0422017-40df-4f51-8b2b-18ebbb9d47ea](https://github.com/user-attachments/assets/344f65bd-9c0a-46aa-9cb0-8cb062e6e853)
+FULL ADDER:
 
-**Waveform**
-![391812099-d5d06393-4aaa-4ce0-a983-ce784ddbf165](https://github.com/user-attachments/assets/3ff3d96e-685f-4eee-8017-d45bfd07a1a8)
-![Screenshot 2025-04-24 202834](https://github.com/user-attachments/assets/d1024eff-84b7-4d2e-b855-99065422f334)
+![image](https://github.com/user-attachments/assets/667e9ac5-0688-45fb-9c69-ef8724253f10)
+
+FULL SUBTRACTOR:
+
+![image](https://github.com/user-attachments/assets/99f2d56f-9cc8-4d67-ab21-fdde61118a13)
+
+**Output Timing Waveform**
+
+FULL ADDER:
+
+![image](https://github.com/user-attachments/assets/704c2f69-a89c-4f86-bdee-2882590898c8)
+
+
+FULL SUBTRACTOR:
+
+
+![image](https://github.com/user-attachments/assets/7391fd63-36f1-4dda-be88-80d73bf57b49)
+
 
 **Result:**
 
